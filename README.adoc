@@ -38,6 +38,7 @@ simulator, solitaire, side scroller.
 == Milestones
 
 * Informal demo on April 7
+* Demo during final exam period
 
 == Goal
 
