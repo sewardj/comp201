@@ -141,7 +141,7 @@ char askguess(string usedletters)
 bool playagain()
 {
 	char again;
-	cout << "\n\nWould you like to play again? choose y for yes or n for no. ";
+	cout << "\n\nWould you like to play again? Choose y for yes or n for no. ";
 
 	cin >> again;
 	cin.clear();
