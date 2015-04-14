@@ -6,7 +6,7 @@
 
 enum State { NEW_GAME, PLAYING };
 
-const int MAX_WRONG = 8;
+const int MAX_WRONG = 6;
 
 // The model manages the state of the game
 class Model {
