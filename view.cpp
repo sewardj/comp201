@@ -81,21 +81,30 @@ void View::show(Model * model) {
 		dest.x = 10;
 		dest.y = 10;
 		SDL_BlitSurface( text, NULL, screen, &dest );
-		
-		// Draw buttons here using SDL_BlitSurface
+
+		SDL_FreeSurface(text);
 		text = TTF_RenderText_Solid( font, "Please choose a level.", textColor );
 		dest.x = 10;
 		dest.y = 40;
 		SDL_BlitSurface( text, NULL, screen, &dest );
+		SDL_FreeSurface(text);
+		
+		// Drawing Button
 		SDL_Rect choice[3];
+		string level[3] = {"Easy","Medium", "Hard"};
 		for (int i = 0; i < 3; i++) {
 			choice[i].x = 100 * i + 20*i;
 			choice[i].y = 80;
 			choice[i].w = 100;
 			choice[i].h = 30;
 			SDL_FillRect(screen, &choice[i], SDL_MapRGB(screen->format,
-        0xff, 0x00, 0x00));
+			0xff, 0x00, 0x00));
+			text = TTF_RenderText_Solid( font, level[i].c_str(), textColor );
+			SDL_BlitSurface( text, NULL, screen, &choice[i] );
+			SDL_FreeSurface(text);
+
 		}
+		
 	} else if (model->state == PLAYING) {
 		// TODO: use SDL here
 		cout << "\n\nYou have " << (MAX_WRONG - model->wrong) << " incorrect guesses left.\n";

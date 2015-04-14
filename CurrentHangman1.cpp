@@ -60,7 +60,7 @@ int main()
 	bool done = false;
 	do
 	{
-		const int MAX_WRONG = 8;  // max number of wrong guesses=8
+		const int MAX_WRONG = 6;  // max number of wrong guesses=6
 		cout << "Please choose a level." << endl;
 		cout << "Choose 1 for Easy, 2 for Medium, or 3 for Hard: ";
 		cin >> choice;
