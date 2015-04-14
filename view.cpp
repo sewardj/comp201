@@ -37,6 +37,12 @@ View::View(string title, int width, int height) {
     // Load assets
     gallows = load("assets/gallows.gif");
 	// Hangmen
+	hangman[0] = load("assets/body0.png");
+	hangman[1] = load("assets/body1.png");
+	hangman[2] = load("assets/body2.png");
+	hangman[3] = load("assets/body3.png");
+	hangman[4] = load("assets/body4.png");
+	hangman[5] = load("assets/body5.png");
 //	for (int i = 0; i < MAX_WRONG; i++) {
 //		hangman[i] = load("assets/bodyi.png");
 //	}
@@ -110,18 +116,24 @@ void View::show(Model * model) {
 		}
 		
 	} else if (model->state == PLAYING) {
-		// TODO: use SDL here
+		// Gallows
 		dest.x = 10;
 		dest.y = 10;
 		SDL_BlitSurface( gallows, NULL, screen,  &dest);
-		// update dest
-//		SDL_BlitSurface( hangman[model->wrong], NULL, screen,  &dest);
-
+		
+		// Body status
+		dest.x = 10;
+		dest.y = 10;
+		SDL BlitSurface ( hangman[model->wrong], NULL, screen, &dest);
+		
+		// Used letters
 		text = TTF_RenderText_Solid( font, model->used.c_str(), textColor );
 		dest.x = 10;
 		dest.y = 600;
 		SDL_BlitSurface( text, NULL, screen, &dest );
 		SDL_FreeSurface(text);
+		
+		// The word progress
 		
 		cout << "\nYou've used the following letters:\n" << model->used << endl;
 		cout << "\nSo far, the word is:\n" << model->progress << endl;
