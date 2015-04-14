@@ -26,7 +26,29 @@ void Controller::loop() {
     letter[SDLK_b] = 'B';
     letter[SDLK_c] = 'C';
     letter[SDLK_d] = 'D';
-	// TODO: fill this in
+	letter[SDLK_e] = 'E';
+	letter[SDLK_f] = 'F';
+	letter[SDLK_g] = 'G';
+	letter[SDLK_h] = 'H';
+	letter[SDLK_i] = 'I';
+	letter[SDLK_j] = 'J';
+	letter[SDLK_k] = 'K';
+	letter[SDLK_l] = 'L';
+    letter[SDLK_m] = 'M';
+	letter[SDLK_n] = 'N';
+	letter[SDLK_o] = 'O';
+	letter[SDLK_p] = 'P';
+	letter[SDLK_q] = 'Q';
+	letter[SDLK_r] = 'R';
+	letter[SDLK_s] = 'S';
+	letter[SDLK_t] = 'T';
+	letter[SDLK_u] = 'U';
+	letter[SDLK_v] = 'V';
+	letter[SDLK_w] = 'W';
+	letter[SDLK_x] = 'X';
+	letter[SDLK_y] = 'Y';
+	letter[SDLK_z] = 'Z';
+
 	SDL_Rect choice[3];
 	for (int i = 0; i < 3; i++) {
 		choice[i].x = 100 * i + 20*i;
