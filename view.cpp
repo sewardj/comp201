@@ -35,7 +35,11 @@ View::View(string title, int width, int height) {
         return;
     }
     // Load assets
-//    snake = load("assets/snake.png");
+    gallows = load("assets/gallows.gif");
+	// Hangmen
+//	for (int i = 0; i < MAX_WRONG; i++) {
+//		hangman[i] = load("assets/bodyi.png");
+//	}
 //    music = Mix_LoadMUS("assets/2Inventions_-_Johaness_Gilther_-_Don_t_leave_me.mp3");
 //    if (music != NULL) {
 //       Mix_PlayMusic( music, -1 );
@@ -107,7 +111,18 @@ void View::show(Model * model) {
 		
 	} else if (model->state == PLAYING) {
 		// TODO: use SDL here
-		cout << "\n\nYou have " << (MAX_WRONG - model->wrong) << " incorrect guesses left.\n";
+		dest.x = 10;
+		dest.y = 10;
+		SDL_BlitSurface( gallows, NULL, screen,  &dest);
+		// update dest
+//		SDL_BlitSurface( hangman[model->wrong], NULL, screen,  &dest);
+
+		text = TTF_RenderText_Solid( font, model->used.c_str(), textColor );
+		dest.x = 10;
+		dest.y = 600;
+		SDL_BlitSurface( text, NULL, screen, &dest );
+		SDL_FreeSurface(text);
+		
 		cout << "\nYou've used the following letters:\n" << model->used << endl;
 		cout << "\nSo far, the word is:\n" << model->progress << endl;
 

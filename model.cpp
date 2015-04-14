@@ -76,6 +76,6 @@ bool Model::lost() {
 }
 
 bool Model::gameOver() {
-    return (wrong < MAX_WRONG) && (progress != theword);
+    return !((wrong < MAX_WRONG) && (progress != theword));
 }
 

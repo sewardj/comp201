@@ -24,6 +24,8 @@ private:
     bool fail;
     SDL_Surface* load(char * path);
     SDL_Surface* text;
+	SDL_Surface* gallows;
+	SDL_Surface* hangman[MAX_WRONG];
 //    Mix_Music * music;
 //    Mix_Chunk * food;
     TTF_Font * font;

@@ -66,12 +66,9 @@ void Controller::loop() {
             case SDL_QUIT:
                 return;
             case SDL_KEYDOWN:
-                switch(e.key.keysym.sym) {
-                    model->makeGuess(letter[e.key.keysym.sym]);
+				cout << letter[e.key.keysym.sym] << endl;
+				model->makeGuess(letter[e.key.keysym.sym]);
                 break;
-                default:
-                break;
-                }
             case SDL_MOUSEBUTTONDOWN:
 				if (model->state == NEW_GAME) {
 					SDL_Rect mouse;
