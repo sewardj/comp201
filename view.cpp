@@ -87,6 +87,15 @@ void View::show(Model * model) {
 		dest.x = 10;
 		dest.y = 40;
 		SDL_BlitSurface( text, NULL, screen, &dest );
+		SDL_Rect choice[3];
+		for (int i = 0; i < 3; i++) {
+			choice[i].x = 100 * i + 20*i;
+			choice[i].y = 80;
+			choice[i].w = 100;
+			choice[i].h = 30;
+			SDL_FillRect(screen, &choice[i], SDL_MapRGB(screen->format,
+        0xff, 0x00, 0x00));
+		}
 	} else if (model->state == PLAYING) {
 		// TODO: use SDL here
 		cout << "\n\nYou have " << (MAX_WRONG - model->wrong) << " incorrect guesses left.\n";

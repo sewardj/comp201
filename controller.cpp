@@ -1,5 +1,6 @@
 #include "controller.h"
 #include <map>
+#include <iostream>
 
 using namespace std;
 
@@ -28,7 +29,7 @@ void Controller::loop() {
 	// TODO: fill this in
 	SDL_Rect choice[3];
 	for (int i = 0; i < 3; i++) {
-		choice[i].x = 100 * i;
+		choice[i].x = 100 * i + 20*i;
 		choice[i].y = 80;
 		choice[i].w = 100;
 		choice[i].h = 30;
@@ -54,9 +55,12 @@ void Controller::loop() {
 					SDL_Rect mouse;
 					mouse.x = e.button.x;
 					mouse.y = e.button.y;
+					mouse.w = 1;
+					mouse.h = 1;
 					for (int i = 0; i < 3; i++) {
 						if (SDL_HasIntersection(&mouse, &choice[i])) {
 							model->makeChoice(i);
+							cout << i<< endl;
 						}
 					}
 					// set the choice
