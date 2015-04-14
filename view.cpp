@@ -1,4 +1,5 @@
 #include "view.h"
+#include <iostream>
 
 using namespace std;
 
@@ -70,11 +71,50 @@ SDL_Surface* View::load(char * path) {
 }
 
 void View::show(Model * model) {
-
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
         0x00, 0x00, 0x00));
 
-    // Probably call SDL_FillRect or SDL_BlitSurface a bunch here :-)
+	SDL_Rect dest;
+    SDL_Color textColor = { 255, 255, 255 };
+	if (model->state == NEW_GAME) {
+		text = TTF_RenderText_Solid( font, "Welcome to our hangman. Have Fun!", textColor );
+		dest.x = 10;
+		dest.y = 10;
+		SDL_BlitSurface( text, NULL, screen, &dest );
+		
+		// Draw buttons here using SDL_BlitSurface
+		text = TTF_RenderText_Solid( font, "Please choose a level.", textColor );
+		dest.x = 10;
+		dest.y = 40;
+		SDL_BlitSurface( text, NULL, screen, &dest );
+	} else if (model->state == PLAYING) {
+		// TODO: use SDL here
+		cout << "\n\nYou have " << (MAX_WRONG - model->wrong) << " incorrect guesses left.\n";
+		cout << "\nYou've used the following letters:\n" << model->used << endl;
+		cout << "\nSo far, the word is:\n" << model->progress << endl;
 
+		if (model->guessed()) {
+			if (model->matched())
+			{
+				cout << "That's right! " << model->lastGuess << " is in the word.\n";
+				// update and add letter to word
+			}
+
+			else
+			{
+				cout << "The letter " << model->lastGuess << " is not in the word. Sorry!\n";
+			}
+		}
+
+		if (model->lost())
+		{
+			cout << "\nYou ran out of guesses. You have been hanged!";
+		}
+		if (model->gameOver()) {
+			cout << "\nThe word was " << model->theword << endl;
+		}
+		
+	}
+	
     SDL_UpdateWindowSurface(window);
 }
