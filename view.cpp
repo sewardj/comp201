@@ -43,6 +43,7 @@ View::View(string title, int width, int height) {
 	hangman[3] = load("assets/body3.png");
 	hangman[4] = load("assets/body4.png");
 	hangman[5] = load("assets/body5.png");
+	hangman[6] = load("assets/body6.png");
     font = TTF_OpenFont( "assets/LiberationSans-Regular.ttf", 28 );
 
 }
@@ -73,12 +74,12 @@ SDL_Surface* View::load(char * path) {
 }
 
 void View::show(Model * model) {
-    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
-        0x00, 0x00, 0x00));
 
 	SDL_Rect dest;
     SDL_Color textColor = { 255, 255, 255 };
 	if (model->state == NEW_GAME) {
+		SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
+			0x00, 0x00, 0x00));
 		text = TTF_RenderText_Solid( font, "Welcome to our hangman. Have Fun!", textColor );
 		dest.x = 10;
 		dest.y = 10;
@@ -108,6 +109,8 @@ void View::show(Model * model) {
 		}
 		
 	} else if (model->state == PLAYING) {
+		SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
+			0xcc, 0xcc, 0xff));
 		// Gallows
 		dest.x = 10;
 		dest.y = 10;
