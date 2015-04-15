@@ -43,14 +43,6 @@ View::View(string title, int width, int height) {
 	hangman[3] = load("assets/body3.png");
 	hangman[4] = load("assets/body4.png");
 	hangman[5] = load("assets/body5.png");
-//	for (int i = 0; i < MAX_WRONG; i++) {
-//		hangman[i] = load("assets/bodyi.png");
-//	}
-//    music = Mix_LoadMUS("assets/2Inventions_-_Johaness_Gilther_-_Don_t_leave_me.mp3");
-//    if (music != NULL) {
-//       Mix_PlayMusic( music, -1 );
-//    }
-//    food = Mix_LoadWAV("assets/yummy.wav");
     font = TTF_OpenFont( "assets/LiberationSans-Regular.ttf", 28 );
 
 }
@@ -124,7 +116,9 @@ void View::show(Model * model) {
 		// Body status
 		dest.x = 10;
 		dest.y = 10;
-		SDL BlitSurface ( hangman[model->wrong], NULL, screen, &dest);
+		SDL_SetColorKey ( hangman[model->wrong], SDL_TRUE,
+			SDL_MapRGB(screen->format,0x00,0x00,0x00));
+		SDL_BlitSurface ( hangman[model->wrong], NULL, screen, &dest);
 		
 		// Used letters
 		text = TTF_RenderText_Solid( font, model->used.c_str(), textColor );
