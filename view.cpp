@@ -105,7 +105,6 @@ void View::show(Model * model) {
 			text = TTF_RenderText_Solid( font, level[i].c_str(), textColor );
 			SDL_BlitSurface( text, NULL, screen, &choice[i] );
 			SDL_FreeSurface(text);
-
 		}
 		
 	} else if (model->state == PLAYING) {
@@ -132,7 +131,12 @@ void View::show(Model * model) {
 		
 		// The word progress
 		
-		cout << "\nYou've used the following letters:\n" << model->used << endl;
+		text = TTF_RenderText_Solid( font, ("You've used the following letters: " + model->used).c_str(), textColor );
+		dest.x = 10;
+		dest.y = 600;
+		SDL_BlitSurface( text, NULL, screen, &dest );
+		SDL_FreeSurface(text);
+		
 		cout << "\nSo far, the word is:\n" << model->progress << endl;
 
 		if (model->guessed()) {

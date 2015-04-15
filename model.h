@@ -17,9 +17,11 @@ public:
     ~Model();
     // Is the game over?
     bool gameOver();
-    // TODO: Put your stuff here
+    // The secret
 	std::string theword;
+	// What we see
 	std::string progress;
+	// The letters we've guessed so far
 	std::string used;
 	std::vector<std::string> words[3];
 	char lastGuess;

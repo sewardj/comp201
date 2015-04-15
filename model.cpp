@@ -67,7 +67,10 @@ void Model::makeGuess(char letter) {
 			}
 		}
 	} else {
-		++wrong;
+		if (used.find(lastGuess) == string::npos) {
+			used = used + lastGuess;
+			++wrong;
+		}
 	}
 }
 
